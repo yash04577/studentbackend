@@ -3,13 +3,14 @@ const app = express();
 const router = require("../routers/routes")
 const port = process.env.PORT || 8000
 require("../DB/dbConnection")
+const cors = require("cors");
 
 
+app.use(cors());
 app.use(router);
 app.use(express.json());
 
 app.get("/", (req,res)=>{
-    res.set('Access-Control-Allow-Origin', '*');
     res.send("welcome to our home page")
 })
 
