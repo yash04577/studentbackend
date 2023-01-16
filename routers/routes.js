@@ -12,17 +12,20 @@ router.get("/", (req,res)=>{
 router.post("/createstudent", async(req,res)=>{
 
     try{
-        
+      
+        // console.log(req.body)
         const {firstName,lastName,email,standard ,number , address, rollnumber} = req.body;
         const findStudent = await student.findOne({firstName,lastName,email,standard ,number , address, rollnumber});
         
         // checking wheather student is already present or not
         if(findStudent){
+            console.log("if condition")
             res.statusCode = 200;
             res.json("student already present");
         }
     
         else{
+            console.log("else condition")
             res.statusCode = 200;
             const newStudent = new student({firstName,lastName,email,standard, rollnumber ,number , address});
             await newStudent.save();

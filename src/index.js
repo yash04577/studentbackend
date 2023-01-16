@@ -7,8 +7,8 @@ const cors = require("cors");
 
 
 app.use(cors());
-app.use(router);
 app.use(express.json());
+app.use(router);
 
 app.get("/", (req,res)=>{
     res.send("welcome to our home page")
