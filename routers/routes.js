@@ -5,6 +5,7 @@ const student = require("../model/studentSchema");
 
 
 router.get("/", (req,res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
     res.json("router home page")
 })
 
@@ -12,7 +13,7 @@ router.get("/", (req,res)=>{
 router.post("/createstudent", async(req,res)=>{
 
     try{
-
+        res.set('Access-Control-Allow-Origin', '*');
         const {firstName,lastName,email,standard ,number , address, rollnumber} = req.body;
         const findStudent = await student.findOne({firstName,lastName,email,standard ,number , address, rollnumber});
         
@@ -42,6 +43,7 @@ router.post("/createstudent", async(req,res)=>{
 router.get("/getstudents", async(req,res)=>{
 
     try{
+        res.set('Access-Control-Allow-Origin', '*');
         const students = await student.find({});
         res.statusCode = 200;
         res.json(students);
@@ -57,7 +59,7 @@ router.get("/getstudents", async(req,res)=>{
 router.delete("/deletestudent", async(req,res)=>{
 
     try{
-
+        res.set('Access-Control-Allow-Origin', '*');
         // finding and deleting student
         const {firstName,lastName,email,standard ,number , address} = req.body;
         await student.deleteOne({firstName:firstName, lastName:lastName})
@@ -75,6 +77,7 @@ router.delete("/deletestudent", async(req,res)=>{
 router.patch("/updatestudent", async(req,res)=>{
 
     try{
+        res.set('Access-Control-Allow-Origin', '*');
         // finding and updating student data
         const {firstName,lastName,email,standard ,number , address, rollnumber,id} = req.body;
         await student.findOneAndUpdate({_id:id}, {

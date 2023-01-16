@@ -9,6 +9,7 @@ app.use(router);
 app.use(express.json());
 
 app.get("/", (req,res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
     res.send("welcome to our home page")
 })
 
