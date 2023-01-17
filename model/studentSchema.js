@@ -22,12 +22,12 @@ const studentSchema = new mongoose.Schema({
         required:true
     },
     rollnumber : {
-        type:Number,
+        type:String,
         required:true
     },
 
     number : {
-        type:Number,
+        type:String,
         required:true
     },
     address :{
