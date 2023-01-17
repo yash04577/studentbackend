@@ -63,8 +63,8 @@ router.delete("/deletestudent", async(req,res)=>{
     try{
         
         // finding and deleting student
-        const {firstName,lastName,email,standard ,number , address} = req.body;
-        await student.deleteOne({firstName:firstName, lastName:lastName})
+        const {id} = req.body;
+        await student.deleteOne({_id:id})
         res.statusCode = 200;
         res.json("deleted sucessfully");
     }
